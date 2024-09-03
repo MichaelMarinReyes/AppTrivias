@@ -22,19 +22,18 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val nombreText: TextView = findViewById(R.id.nombreText)
+        val nombreText: TextView = findViewById(R.id.entradaTexto)
         val iniciarBoton: Button = findViewById(R.id.iniciarSesionBoton)
         val registrarBoton: Button = findViewById(R.id.registrarBoton)
 
         iniciarBoton.setOnClickListener{
             if (nombreText.getText().isEmpty()) {
-                Toast.makeText(this, "Campos vacíos", Toast.LENGTH_SHORT ).show()
+                Toast.makeText(this, "Campo vacío", Toast.LENGTH_SHORT).show()
             }
         }
 
         registrarBoton.setOnClickListener{
             val registro = Intent(this, Registro::class.java)
-
             startActivity(registro)
         }
     }

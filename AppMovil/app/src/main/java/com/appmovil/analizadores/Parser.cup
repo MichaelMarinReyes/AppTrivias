@@ -1,0 +1,42 @@
+package com.appmovil.analizadores;
+
+import java.util.ArrayList;
+import java_cup.runtime.*;
+import com.appmovil.reportes.ErrorSintactico;
+
+class Parser;
+
+parser code {:
+    public static ArrayList<ErrorSintactico> erroresSintacticos = new ArrayList();
+
+    public ArrayList<ErrorSintactico> getErrorSintactico() {
+        return erroresSintacticos;
+    }
+
+    public void report_error(String message, Object info) {
+        if (info instanceof Symbol) {
+            Symbol s = (Symbol) info;
+            int fila = s.left + 1;
+            int columna = s.right + 1;
+            String result = (s.value != null) ? String.valueOf(s.value) : " ";
+            erroresSintacticos.add(new ErrorSintactico("Sintáctico", fila, columna, result, "Se esperaba una operación"));
+        } else {
+            System.out.println("Error sintáctico: " + message);
+        }
+    }
+
+    public void report_fatal_error(String message, Object info) throws Exception {
+        report_error(message, info);
+        throw new Exception("Error sintáctico irrecuperable.");
+    }
+:}
+
+terminal DECIMAL, ENTERO, LLAVE_ABIERTA, LLAVE_CERRADA, CORCHETE_ABIERTO, CORCHETE_CERRADO, DOS_PUNTOS, COMA, GUION_BAJO, GUION;
+terminal CADENA, USUARIO, PASSWORD, NOMBRE, INSTITUCION, NUEVO, FECHA, CREACION;
+
+non terminal inicial, expresion, errorSintactico;
+
+start with inicial;
+
+inicial ::= errorSintactico:err {: report_error("Error al ingresar", err); :}
+           | /*Nada*/;
