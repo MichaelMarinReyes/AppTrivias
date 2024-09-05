@@ -1,0 +1,63 @@
+/* styles/index.css */
+
+/* Estilo para el cuerpo de la página */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0; /* Color de fondo suave */
+}
+
+/* Estilo para el contenedor del formulario de inicio de sesión */
+.login-container {
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+}
+
+/* Estilo para el título */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el área de texto */
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Espacio debajo del área de texto */
+}
+
+/* Estilo para los botones */
+button.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff; /* Color de fondo azul */
+    border: none;
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer;
+    margin: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el botón al pasar el cursor sobre él */
+button.btn:hover {
+    background-color: #0056b3; /* Color azul más oscuro */
+}

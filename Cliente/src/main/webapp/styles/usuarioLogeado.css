@@ -1,0 +1,27 @@
+/* styles/trivias.css */
+
+/* Estilo para la cuadrícula de botones */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+/* Estilo para los botones */
+.button-grid button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el botón al pasar el cursor sobre él */
+.button-grid button:hover {
+    background-color: #45a049;
+}
