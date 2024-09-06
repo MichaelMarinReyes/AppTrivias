@@ -19,8 +19,9 @@ public class HelloServlet extends HttpServlet {
         if ("Registrarse".equals(action)) {
             response.sendRedirect("registro.jsp");
         } else if ("Iniciar Sesión".equals(action)) {
+            response.sendRedirect("principal/principal.jsp");
             // Iniciar la comunicación con el servidor de sockets
-            client = new SocketCliente("localhost", 5000); // Cambia 'localhost' a la IP del servidor de sockets si están en diferentes máquinas.
+           /* client = new SocketCliente("localhost", 5000); // Cambia 'localhost' a la IP del servidor de sockets si están en diferentes máquinas.
             try {
                 client.connect();
 
@@ -56,7 +57,7 @@ public class HelloServlet extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            }
+            }*/
         }
     }
 
