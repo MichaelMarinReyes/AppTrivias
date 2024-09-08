@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: michael
+  Date: 5/09/24
+  Time: 19:41
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -19,19 +26,16 @@
 </div>
 
 <div class="container">
-    <div class="editor-container">
-        <div class="editor-section">
+    <div class="contenedor-editor">
+        <div class="editor">
             <h2>Código XSON</h2>
-            <div class="line-numbers" id="lineNumbers">1</div>
-            <textarea class="editor" id="editor" onscroll="syncScroll()" oninput="updateLineNumbers()" placeholder="Escriba su código XSON aquí..."></textarea>
-        </div>
-
-        <div class="editor-section">
-            <h2>Consultas SQLKV</h2>
-            <textarea class="sqlkv-editor" id="sqlkvEditor" placeholder="Escriba su consulta SQLKV aquí..."></textarea>
+            <div class="editor-wrapper">
+                <div class="numero-linea" id="numeroLinea">1</div>
+                <textarea class="editor" id="editor" onscroll="syncScroll()" oninput="actualizarNumeroLinea()" placeholder="Escriba su código XSON aquí..."></textarea>
+            </div>
         </div>
     </div>
-
+    <br><br>
     <div class="response-container">
         <h2>Área de Respuesta</h2>
         <table id="responseTable">
@@ -51,20 +55,24 @@
 <script>
     function syncScroll() {
         const editor = document.getElementById('editor');
-        const lineNumbers = document.getElementById('lineNumbers');
+        const lineNumbers = document.getElementById('numeroLinea');
         lineNumbers.scrollTop = editor.scrollTop;
     }
 
-    function updateLineNumbers() {
+    function actualizarNumeroLinea() {
         const editor = document.getElementById('editor');
-        const lineNumbers = document.getElementById('lineNumbers');
+        const lineNumbers = document.getElementById('numeroLinea');
         const lines = editor.value.split('\n').length;
         let lineNumbersContent = '';
+
+        // Agregamos un salto de línea después de cada número
         for (let i = 1; i <= lines; i++) {
             lineNumbersContent += i + '\n';
         }
+
         lineNumbers.textContent = lineNumbersContent;
     }
+
 
     document.addEventListener('DOMContentLoaded', updateLineNumbers);
 </script>
