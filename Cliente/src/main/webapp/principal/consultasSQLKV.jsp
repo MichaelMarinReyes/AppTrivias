@@ -9,12 +9,36 @@
 <html>
   <head>
     <title>Consultas SQLKV</title>
+    <link rel="stylesheet" type="text/css" href="../styles/consultasSQLKV.css">
   </head>
   <body>
-    <div class="editor-section">
+    <div class="editor">
       <h2>Consultas SQLKV</h2>
+      <button onclick="realizarConsulta()">Realizar consulta</button>
       <textarea class="sqlkv-editor" id="sqlkvEditor" placeholder="Escriba su consulta SQLKV aquí..."></textarea>
     </div>
+    <div>
+      <table>
+        <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Aquí se llenarán los datos de errores y mensajes -->
+        </tbody>
+      </table>
     </div>
+
+  <script>
+    function realizarConsulta() {
+      if (editor.value.trim() === '') {
+        alert('Escriba una consulta')
+      } else {
+        alert('Buscando')
+      }
+    }
+  </script>
   </body>
 </html>
