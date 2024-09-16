@@ -1,4 +1,4 @@
-package webapp.cliente;
+package com.cliente;
 
 import java.io.*;
 
@@ -21,7 +21,7 @@ public class HelloServlet extends HttpServlet {
         } else if ("Iniciar Sesión".equals(action)) {
             response.sendRedirect("principal/principal.jsp");
             // Iniciar la comunicación con el servidor de sockets
-           /* client = new SocketCliente("localhost", 5000); // Cambia 'localhost' a la IP del servidor de sockets si están en diferentes máquinas.
+            client = new SocketCliente("localhost", 8000); // Cambia 'localhost' a la IP del servidor de sockets si están en diferentes máquinas.
             try {
                 client.connect();
 
@@ -50,7 +50,7 @@ public class HelloServlet extends HttpServlet {
                 out.println("<html><body>");
                 out.println("<h1>Error al conectarse al servidor de sockets</h1>");
                 out.println("</body></html>");
-            } finally {
+            }/* finally {
                 // Cerrar la conexión con el servidor de sockets
                 try {
                     client.close();

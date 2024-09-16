@@ -1,4 +1,4 @@
-package webapp.cliente;
+package com.cliente;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;

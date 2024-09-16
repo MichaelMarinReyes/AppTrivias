@@ -1,0 +1,70 @@
+package com.analizadores.sintactico;
+
+import com.analizadores.sintactico.ErrorSintactico;
+import java_cup.runtime.*;
+import com.analizadores.lexico.Lexer;
+import java.util.ArrayList;
+
+class ParserWeb;
+
+parser code {:
+    public static ArrayList<ErrorSintactico> errorSintactico = new ArrayList();
+        public Double resultado = 0.0;
+
+        public ArrayList<ErrorSintactico> getErrorSintactico() {
+            return errorSintactico;
+        }
+
+        public Double getResultado() {
+            return resultado;
+        }
+
+        public void report_error(String message, Object info) {
+            if (info instanceof Symbol) {
+                Symbol s = (Symbol) info;
+                int fila = s.left + 1;
+                int columna = s.right + 1;
+                String result = (s.value != null) ? String.valueOf(s.value) : " ";
+                errorSintactico.add(new ErrorSintactico("Sintáctico", fila, columna, result, "Se esperaba una operación"));
+            } else {
+                System.out.println("Error sintáctico: " + message);
+            }
+        }
+
+        public void report_fatal_error(String message, Object info) throws Exception {
+            report_error(message, info);
+            throw new Exception("Error sintáctico irrecuperable.");
+        }
+
+:}
+
+terminal MENOR_QUE, INTERROGACION, XSON, VERSION, IGUAL, COMILLAS, DECIMAL, MAYOR_QUE, REALIZAR, GUION_BAJO, SOLICITUD;
+terminal DOS_PUNTOS, USUARIO, DATOS, LLAVE_ABIERTA, LLAVE_CERRADA, CORCHETE_ABIERTO, CORCHETE_CERRADO, ID, PASSWORD, COMA, LOGIN;
+terminal ADMIRACION, GUION, ENTERO, FIN, TEMA, FECHA, NUEVO, TEXTO, ENVIO, INDICE, TIEMPO, AGREGAR, ANTIGUO, VISIBLE, CREACION, ELIMINAR, OPCIONES, PREGUNTA, RESPUESTA, RESPUESTA_SING, RESPUESTAS, NOMBRE, CLASE, INSTITUCION, SOLICITUDES, MODIFICACION;
+non terminal inicial, programa, instruccion, tipoSolicitud, crearTrivia, modificarTrivia, eliminarTrivia, modificarUsuario;
+non terminal solicitud, crearUsuario, eliminarUsuario, inicioSesion;
+
+start with inicial;
+
+inicial ::= programa;
+
+programa ::= instruccion programa
+           | MENOR_QUE INTERROGACION XSON VERSION IGUAL COMILLAS DECIMAL COMILLAS INTERROGACION MAYOR_QUE tipoSolicitud;
+
+
+tipoSolicitud ::= MENOR_QUE INTERROGACION REALIZAR GUION_BAJO SOLICITUD DOS_PUNTOS COMILLAS solicitud MAYOR_QUE;
+
+solicitud ::= inicioSesion
+           | crearTrivia;
+
+inicioSesion ::= LLAVE_ABIERTA COMILLAS DATOS GUION_BAJO USUARIO COMILLAS DOS_PUNTOS CORCHETE_ABIERTO LLAVE_ABIERTA COMILLAS USUARIO COMILLAS DOS_PUNTOS COMILLAS ID COMILLAS COMA COMILLAS PASSWORD COMILLAS DOS_PUNTOS COMILLAS ID COMILLAS LLAVE_CERRADA CORCHETE_CERRADO LLAVE_CERRADA;
+
+crearTrivia ::= /**nada*/;
+
+/**
+modificarTrivia ::= ;
+eliminarTrivia ::= ;
+modificarUsuario ::= ;
+crearUsuario ::= ;
+eliminarUsuario ::= ;
+*/

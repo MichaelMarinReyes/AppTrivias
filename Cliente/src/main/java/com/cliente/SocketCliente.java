@@ -1,4 +1,4 @@
-package webapp.cliente;
+package com.cliente;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

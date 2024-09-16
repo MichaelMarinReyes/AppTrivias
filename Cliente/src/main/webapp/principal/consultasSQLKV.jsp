@@ -14,7 +14,7 @@
   <body>
     <div class="editor">
       <h2>Consultas SQLKV</h2>
-      <button onclick="realizarConsulta()">Realizar consulta</button>
+      <button onclick="realizarConsulta()">Consultar</button>
       <textarea class="sqlkv-editor" id="sqlkvEditor" placeholder="Escriba su consulta SQLKV aquí..."></textarea>
     </div>
     <div>
@@ -33,10 +33,10 @@
 
   <script>
     function realizarConsulta() {
-      if (editor.value.trim() === '') {
-        alert('Escriba una consulta')
+      if (sqlkvEditor.value.trim() === '') {
+        alert('No hay nada para consultar')
       } else {
-        alert('Buscando')
+        alert('Compilando')
       }
     }
   </script>
